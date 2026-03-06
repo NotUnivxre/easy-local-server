@@ -63,3 +63,11 @@ h1 { font-size: 1.5rem; color: #fff; }
 .file-item { padding: 10px; border-bottom: 1px solid #222; display: flex; justify-content: space-between; color: #ccc; }
 .file-item:hover { background: #1a1a1a; }
 .file-item.clickable { cursor: pointer; color: #4caf50; font-weight: bold; }
+
+/* EFEK DRAG & DROP */
+.file-manager { transition: 0.3s ease; }
+.file-manager.drag-over {
+    border: 2px dashed #4caf50;
+    background-color: #1a251a;
+    opacity: 0.8;
+}

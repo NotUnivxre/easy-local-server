@@ -97,15 +97,20 @@
             </div>
 
             <div id="files" class="tab-content hidden">
-                <div class="file-manager">
+                <div class="file-manager" id="fileManagerZone">
                     <div class="file-header">
                         <span id="currentPathText">/minecraft/</span>
-                        <button class="btn-yellow" id="btnUpFolder" style="display:none; padding: 5px 10px; font-size: 12px;">⬅ Back</button>
+                        <div>
+                            <button class="btn-yellow" id="btnUpFolder" style="display:none; padding: 5px 10px; font-size: 12px; margin-right: 5px;">⬅ Back</button>
+                            <button class="btn-green" id="btnUploadClick" style="padding: 5px 10px; font-size: 12px;">📤 Upload</button>
+                        </div>
+                        <input type="file" id="fileInput" style="display: none;">
                     </div>
                     <div class="file-list" id="fileContainer">
                         <p style="padding: 10px; color: #888;">Memuat files...</p>
                     </div>
                 </div>
+                <p style="color: #666; font-size: 12px; margin-top: 10px; text-align: center;">💡 Kamu juga bisa Drag & Drop file ke dalam kotak di atas!</p>
             </div>
         </main>
     </div>

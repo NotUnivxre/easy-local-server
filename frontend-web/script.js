@@ -122,3 +122,53 @@ document.getElementById('commandForm').addEventListener('submit', (e) => {
         input.value = '';
     }
 });
+
+// --- LOGIKA UPLOAD & DRAG DROP ---
+const fileInput = document.getElementById('fileInput');
+const btnUploadClick = document.getElementById('btnUploadClick');
+const fileManagerZone = document.getElementById('fileManagerZone');
+
+// 1. Upload via Tombol
+btnUploadClick.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', (e) => {
+    if(e.target.files.length > 0) processUpload(e.target.files[0]);
+});
+
+// 2. Upload via Drag & Drop
+fileManagerZone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    fileManagerZone.classList.add('drag-over');
+});
+fileManagerZone.addEventListener('dragleave', () => {
+    fileManagerZone.classList.remove('drag-over');
+});
+fileManagerZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    fileManagerZone.classList.remove('drag-over');
+    if(e.dataTransfer.files.length > 0) processUpload(e.dataTransfer.files[0]);
+});
+
+// Fungsi Pengirim ke PC Kamu
+function processUpload(file) {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('targetPath', currentDirPath); // Biar masuk ke folder yang sedang dibuka
+
+    pathText.innerText = '⏳ Sedang mengupload...';
+
+    // Kirim lewat jalur HTTP Ngrok
+    fetch(`${BACKEND_URL}/upload`, {
+        method: 'POST',
+        body: formData,
+        headers: { "ngrok-skip-browser-warning": "true" }
+    })
+    .then(res => res.json())
+    .then(data => {
+        alert(data.message);
+        loadFiles(currentDirPath); // Refresh list file-nya otomatis
+    })
+    .catch(err => {
+        alert('Upload gagal! Pastikan file tidak terlalu besar atau Ngrok aktif.');
+        loadFiles(currentDirPath);
+    });
+}

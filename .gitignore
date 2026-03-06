@@ -1,0 +1,22 @@
+# Mengabaikan folder dependency Node.js (bisa diinstal ulang pakai npm install)
+node_modules/
+npm-debug.log
+
+# Mengabaikan file server Minecraft yang berat
+backend-pc/minecraft/server.jar
+
+# Mengabaikan folder hasil generate server PaperMC
+backend-pc/minecraft/cache/
+backend-pc/minecraft/libraries/
+backend-pc/minecraft/versions/
+
+# Mengabaikan file dunia dan log (biar repo Github kamu tetap bersih)
+backend-pc/minecraft/world/
+backend-pc/minecraft/world_nether/
+backend-pc/minecraft/world_the_end/
+backend-pc/minecraft/logs/
+backend-pc/minecraft/crash-reports/
+
+# Mengabaikan file sistem/editor
+.DS_Store
+.vscode/

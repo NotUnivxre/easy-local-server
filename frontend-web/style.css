@@ -1,0 +1,19 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Courier New', Courier, monospace; }
+body { background-color: #0d0d0d; color: #e0e0e0; display: flex; justify-content: center; height: 100vh; padding: 20px; }
+.container { width: 100%; max-width: 900px; display: flex; flex-direction: column; gap: 20px; }
+
+header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 15px; }
+h1 { font-size: 1.5rem; letter-spacing: 1px; color: #fff; }
+
+.controls button { padding: 10px 20px; border: none; cursor: pointer; font-weight: bold; border-radius: 4px; transition: 0.2s; }
+.btn-green { background-color: #1a1a1a; color: #4caf50; border: 1px solid #4caf50 !important; }
+.btn-green:hover { background-color: #4caf50; color: #000; }
+.btn-red { background-color: #1a1a1a; color: #f44336; border: 1px solid #f44336 !important; margin-left: 10px;}
+.btn-red:hover { background-color: #f44336; color: #000; }
+
+.terminal-container { display: flex; flex-direction: column; flex-grow: 1; background: #000; border: 1px solid #333; border-radius: 6px; overflow: hidden; height: 70vh; }
+#terminal { flex-grow: 1; padding: 15px; overflow-y: auto; white-space: pre-wrap; font-size: 0.9rem; color: #a9b7c6; }
+#commandForm { display: flex; border-top: 1px solid #333; }
+#cmdInput { flex-grow: 1; background: #0a0a0a; color: #fff; border: none; padding: 15px; outline: none; }
+#commandForm button { padding: 0 25px; background: #222; color: #fff; border: none; cursor: pointer; }
+#commandForm button:hover { background: #444; }

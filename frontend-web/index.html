@@ -53,10 +53,6 @@
                             <span class="stat-label">RAM Usage (PC)</span>
                             <h3 id="ramUsage">0 MB / 0 GB</h3>
                         </div>
-                        <div class="stat-card">
-                            <span class="stat-label">CPU Load</span>
-                            <h3 id="cpuUsage">0%</h3>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -69,20 +65,23 @@
                     </div>
                     <div class="opt-card">
                         <label>Max Players (Slots)</label>
-                        <input type="number" id="opt-slots" value="20">
+                        <input type="number" id="opt-slots">
                     </div>
                     <div class="opt-card">
                         <label>Gamemode</label>
                         <select id="opt-gamemode">
                             <option value="survival">Survival</option>
                             <option value="creative">Creative</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="spectator">Spectator</option>
                         </select>
                     </div>
                     <div class="opt-card">
                         <label>Difficulty</label>
                         <select id="opt-difficulty">
+                            <option value="peaceful">Peaceful</option>
                             <option value="easy">Easy</option>
-                            <option value="normal" selected>Normal</option>
+                            <option value="normal">Normal</option>
                             <option value="hard">Hard</option>
                         </select>
                     </div>
@@ -90,40 +89,23 @@
                         <label>Cracked (Online Mode)</label>
                         <select id="opt-online">
                             <option value="true">Premium Only (True)</option>
-                            <option value="false" selected>Cracked Allowed (False)</option>
+                            <option value="false">Cracked Allowed (False)</option>
                         </select>
                     </div>
                 </div>
                 <button class="btn-save" style="margin-top: 20px;">Save Options</button>
-                <p style="color: #666; font-size: 12px; margin-top: 10px;">(Saat ini yang merespons ke sistem adalah RAM Allocation. Konfigurasi lainnya untuk update UI berikutnya)</p>
             </div>
 
             <div id="files" class="tab-content hidden">
                 <div class="file-manager">
                     <div class="file-header">
-                        <span>/minecraft/world/</span>
-                        <button class="btn-upload">Upload File</button>
+                        <span id="currentPathText">/minecraft/</span>
+                        <button class="btn-yellow" id="btnUpFolder" style="display:none; padding: 5px 10px; font-size: 12px;">⬅ Back</button>
                     </div>
-                    <div class="file-list">
-                        <div class="file-item folder">
-                            <span>📁 datapacks</span>
-                            <span>Folder</span>
-                        </div>
-                        <div class="file-item folder">
-                            <span>📁 playerdata</span>
-                            <span>Folder</span>
-                        </div>
-                        <div class="file-item file">
-                            <span>📄 level.dat</span>
-                            <span>2 KB</span>
-                        </div>
-                        <div class="file-item file">
-                            <span>📄 server.properties</span>
-                            <span>1 KB</span>
-                        </div>
+                    <div class="file-list" id="fileContainer">
+                        <p style="padding: 10px; color: #888;">Memuat files...</p>
                     </div>
                 </div>
-                <p style="color: #666; font-size: 12px; margin-top: 10px;">(Tampilan mockup file manager. Fitur edit langsung menyusul.)</p>
             </div>
         </main>
     </div>

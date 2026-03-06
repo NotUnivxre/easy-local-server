@@ -151,8 +151,8 @@ fileManagerZone.addEventListener('drop', (e) => {
 // Fungsi Pengirim ke PC Kamu
 function processUpload(file) {
     const formData = new FormData();
-    formData.append('file', file);
     formData.append('targetPath', currentDirPath); // Biar masuk ke folder yang sedang dibuka
+    formData.append('file', file); 
 
     pathText.innerText = '⏳ Sedang mengupload...';
 

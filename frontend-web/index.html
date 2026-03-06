@@ -8,22 +8,122 @@
     <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Easy Local Server</h1>
-            <div class="controls">
-                <button id="startBtn" class="btn-green">Start Server</button>
-                <button id="stopBtn" class="btn-red">Stop Server</button>
+    <div class="app-container">
+        <nav class="sidebar">
+            <div class="brand">
+                <h2>Easy Local Server</h2>
             </div>
-        </header>
-        
-        <main>
-            <div class="terminal-container">
-                <div id="terminal"></div>
-                <form id="commandForm">
-                    <input type="text" id="cmdInput" placeholder="Ketik command di sini (cth: say Halo)..." autocomplete="off">
-                    <button type="submit">Send</button>
-                </form>
+            <ul class="nav-links">
+                <li class="active" onclick="switchTab('home')">Dashboard</li>
+                <li onclick="switchTab('options')">Options</li>
+                <li onclick="switchTab('files')">Files</li>
+            </ul>
+            <div class="sidebar-footer">
+                <p>Status: <span id="serverStatus" class="status-offline">Offline</span></p>
+            </div>
+        </nav>
+
+        <main class="content">
+            <header class="top-bar">
+                <h1 id="pageTitle">Dashboard</h1>
+                <div class="controls">
+                    <button id="startBtn" class="btn-green">Start</button>
+                    <button id="restartBtn" class="btn-yellow">Restart</button>
+                    <button id="stopBtn" class="btn-red">Stop</button>
+                </div>
+            </header>
+
+            <div id="home" class="tab-content active-tab">
+                <div class="dashboard-grid">
+                    <div class="terminal-card">
+                        <div class="terminal-container">
+                            <div id="terminal"></div>
+                            <form id="commandForm">
+                                <input type="text" id="cmdInput" placeholder="Ketik command di sini (cth: say Halo)..." autocomplete="off">
+                                <button type="submit">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="stats-sidebar">
+                        <div class="stat-card">
+                            <span class="stat-label">Address (Playit.gg)</span>
+                            <input type="text" id="playitAddress" class="address-input" placeholder="Masukkan IP Playit.gg...">
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">RAM Usage (PC)</span>
+                            <h3 id="ramUsage">0 MB / 0 GB</h3>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">CPU Load</span>
+                            <h3 id="cpuUsage">0%</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="options" class="tab-content hidden">
+                <div class="options-grid">
+                    <div class="opt-card">
+                        <label>RAM Allocation (MB)</label>
+                        <input type="number" id="opt-ram" placeholder="Contoh: 2048" step="1024">
+                    </div>
+                    <div class="opt-card">
+                        <label>Max Players (Slots)</label>
+                        <input type="number" id="opt-slots" value="20">
+                    </div>
+                    <div class="opt-card">
+                        <label>Gamemode</label>
+                        <select id="opt-gamemode">
+                            <option value="survival">Survival</option>
+                            <option value="creative">Creative</option>
+                        </select>
+                    </div>
+                    <div class="opt-card">
+                        <label>Difficulty</label>
+                        <select id="opt-difficulty">
+                            <option value="easy">Easy</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    <div class="opt-card">
+                        <label>Cracked (Online Mode)</label>
+                        <select id="opt-online">
+                            <option value="true">Premium Only (True)</option>
+                            <option value="false" selected>Cracked Allowed (False)</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn-save" style="margin-top: 20px;">Save Options</button>
+                <p style="color: #666; font-size: 12px; margin-top: 10px;">(Saat ini yang merespons ke sistem adalah RAM Allocation. Konfigurasi lainnya untuk update UI berikutnya)</p>
+            </div>
+
+            <div id="files" class="tab-content hidden">
+                <div class="file-manager">
+                    <div class="file-header">
+                        <span>/minecraft/world/</span>
+                        <button class="btn-upload">Upload File</button>
+                    </div>
+                    <div class="file-list">
+                        <div class="file-item folder">
+                            <span>📁 datapacks</span>
+                            <span>Folder</span>
+                        </div>
+                        <div class="file-item folder">
+                            <span>📁 playerdata</span>
+                            <span>Folder</span>
+                        </div>
+                        <div class="file-item file">
+                            <span>📄 level.dat</span>
+                            <span>2 KB</span>
+                        </div>
+                        <div class="file-item file">
+                            <span>📄 server.properties</span>
+                            <span>1 KB</span>
+                        </div>
+                    </div>
+                </div>
+                <p style="color: #666; font-size: 12px; margin-top: 10px;">(Tampilan mockup file manager. Fitur edit langsung menyusul.)</p>
             </div>
         </main>
     </div>

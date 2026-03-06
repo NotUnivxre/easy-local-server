@@ -2,7 +2,11 @@
 // Contoh: const BACKEND_URL = 'https://1234-abcd.ngrok-free.app';
 const BACKEND_URL = 'https://freddie-miffed-jowly.ngrok-free.dev'; 
 
-const socket = io(BACKEND_URL);
+const socket = io(BACKEND_URL, {
+    extraHeaders: {
+        "ngrok-skip-browser-warning": "true"
+    }
+});
 const terminal = document.getElementById('terminal');
 const commandForm = document.getElementById('commandForm');
 const cmdInput = document.getElementById('cmdInput');

@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "pidusage": "^4.0.1"
+  }
+}
